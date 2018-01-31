@@ -13,6 +13,13 @@ function init() {
 
     gl.clearColor( 0.25, 0.45, 0.75, 1.0 );
 	
+    /*var program = initShaders(
+	    gl,
+	    "Cone-vertex-shader",
+	    "Cone-fragment-shader");
+    
+    gl.useProgram(program);*/
+	
     cone = new Cone( 1000 );
 
     render();
