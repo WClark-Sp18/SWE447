@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script src="../Common/webgl-utils.js"></script>
+<script src="../Common/initShaders.js"></script>
+</head>
+
+<body>
+<canvas id="webgl-canvas" width="512" height="512" style="background-color: #00FF77"></canvas>
+</body>
+</html>
