@@ -14,7 +14,7 @@ function init() {
   }
 
   gl.clearColor( 1.0, 0.5, 0.2, 1.0 );
-  //gl.enable( gl.DEPTH_TEST );
+  gl.enable( gl.DEPTH_TEST );
 
   cube = new Cube();
 
