@@ -29,18 +29,18 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             ]),
         numComponents : 3
     };
-
+	
 	this.colors = {
-        values : new Float32Array([
-            1.0, 0.0, 0.0, 
-            1.0, 1.0, 0.0,
-            1.0, 0.0, 1.0,
-            1.0, 0.0, 1.0,
-		1.0,0.5,0.5,
-		0.5,0.0,0.5,
-        ]),
-        numComponents : 3 
-    };
+		values : new Float32Array([
+			1.0, 0.0, 0.0,
+			0.0, 1.0, 0.0,
+			0.0, 0.0, 1.0,
+			1.0, 1.0, 0.0,
+			1.0, 0.0, 1.0,
+			0.0, 1.0, 1.0,
+			]),
+		numcomponents : 3
+	};
     
     this.indices = { 
         values : new Uint16Array([
