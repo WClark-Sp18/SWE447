@@ -15,28 +15,36 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             "\tfragment shader id:\t" + fragShdr + "\n" );
         return; 
     }
-	// I shortened the lengths because two cube corners 
-	//were getting cut for going out of range - I expect.
     this.positions = { 
         values : new Float32Array([
            // Add your list vertex positions here
-			0.0, 0.0, 0.0, //0 floor bottom left
-			0.8, 0.0, 0.0, //1				right
-			0.8, 0.8, 0.0, //2		 top	right
-			0.0, 0.8, 0.0, //3				left
-			0.0, 0.0, 0.8, //4 ceil  bottom left
-			0.8, 0.0, 0.8, //5				right
-			0.8, 0.8, 0.8, //6		 top	right
-			0.0, 0.8, 0.8  //7				left
+			0.0, 0.0, 0.0, 
+			0.5, 0.0, 0.0, 
+			0.5, 0.5, 0.0, 
+			0.0, 0.5, 0.0, 
+			0.0, 0.0, 0.5, 
+			0.5, 0.0, 0.5, 
+			0.5, 0.5, 0.5, 
+			0.0, 0.5, 0.5  
             ]),
         numComponents : 3
+    };
+
+	this.colors = {
+        values : new Float32Array([
+            1.0, 0.0, 0.0, 
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0
+        ]),
+        numComponents : 3 
     };
     
     this.indices = { 
         values : new Uint16Array([
             // Add your list of triangle indices here
-			0, 2, 3, 0, 1, 2, 0, 5, 1, 0, 4, 5, 0, 7, 4, 0, 3, 7,	// fan around 0
-			6, 1, 5, 6, 2, 1, 6, 3, 2, 6, 7, 3, 6, 4, 7, 6, 5, 4	// fan around 6
+			0, 2, 3, 0, 1, 2, 0, 5, 1, 0, 4, 5, 0, 7, 4, 0, 3, 7,	
+			6, 1, 5, 6, 2, 1, 6, 3, 2, 6, 7, 3, 6, 4, 7, 6, 5, 4	
         ])
     };
     this.indices.count = this.indices.values.length;
