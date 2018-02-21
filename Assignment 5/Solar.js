@@ -149,24 +149,25 @@ function render() {
   //
 
   window.requestAnimationFrame(render);
-}
+
 
 // Earth ----------------------------------------
-name = "Earth";
-planet = Planets[name];
-data = SolarSystem[name];
+  name = "Earth";
+  planet = Planets[name];
+  data = SolarSystem[name];
   
-planet.PointMode = false;
+  planet.PointMode = false;
   
-ms.push();
-ms.rotate(time/data.year, rotAxis);
-ms.translate(data.distance*10, 0, 0);
-ms.scale(data.radius);
-gl.useProgram(planet.program);
-gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
-gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
-gl.uniform4fv(planet.uniforms.color, flatten(data.color));
-planet.render();
+  ms.push();
+    ms.rotate(time/data.year, rotAxis);
+  ms.translate(data.distance*10, 0, 0);
+  ms.scale(data.radius);
+  gl.useProgram(planet.program);
+  gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+  gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+  gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+  planet.render();
+}
 
 //---------------------------------------------------------------------------
 //
