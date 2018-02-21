@@ -21,7 +21,7 @@ var Planets = {
   // Mercury : undefined,
   // Venus : undefined,
   // Earth : undefined,
-  // Moon : undefined,
+   Moon : undefined,
   // Mars : undefined,
   // Jupiter : undefined,
   // Saturn : undefined,
@@ -36,7 +36,7 @@ var V;  // matrix storing the viewing transformation
 // Projection transformation parameters
 var P;  // matrix storing the projection transformation
 var near = 10;      // near clipping plane's distance
-var far = 120;      // far clipping plane's distance
+var far = 220;      // far clipping plane's distance
 
 // Animation variables
 var time = 0.0;      // time, our global time constant, which is 
@@ -97,6 +97,7 @@ function render() {
   time += timeDelta;
 
   var ms = new MatrixStack();
+  var rotAxis = [0, 1, 0.5];
 
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
@@ -149,6 +150,23 @@ function render() {
 
   window.requestAnimationFrame(render);
 }
+
+// Earth ----------------------------------------
+name = "Earth";
+planet = Planets[name];
+data = SolarSystem[name];
+  
+planet.PointMode = false;
+  
+ms.push();
+ms.rotate(time/data.year, rotAxis);
+ms.translate(data.distance*10, 0, 0);
+ms.scale(data.radius);
+gl.useProgram(planet.program);
+gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
+gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
+gl.uniform4fv(planet.uniforms.color, flatten(data.color));
+planet.render();
 
 //---------------------------------------------------------------------------
 //
