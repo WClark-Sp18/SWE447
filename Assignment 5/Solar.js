@@ -148,9 +148,6 @@ function render() {
   //  Add your code for more planets here!
   //
 
-  window.requestAnimationFrame(render);
-
-
 // Earth ----------------------------------------
   name = "Earth";
   planet = Planets[name];
@@ -167,7 +164,10 @@ function render() {
   gl.uniformMatrix4fv(planet.uniforms.P, false, flatten(P));
   gl.uniform4fv(planet.uniforms.color, flatten(data.color));
   planet.render();
+  
+  window.requestAnimationFrame(render);
 }
+
 
 //---------------------------------------------------------------------------
 //
