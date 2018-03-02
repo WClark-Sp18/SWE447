@@ -1,9 +1,9 @@
 var canvas;
 var gl;
 var Mars : {
-    radius : 0.532,
-    distance : 1.52,
-    year : 1.88,
+    radius : 3,
+    distance : 0,
+    year : 0;
     color : [ 1.0, 0.0, 0.0, 1.0 ]
   },
   var V;
@@ -14,4 +14,13 @@ var Mars : {
   //---------------------------------------------------
   
   funciton init(){
+      canvas = document.getElementById("webgl-canvas");
+      gl = WebGLUtils.setupWebGL(canvas);
+      if (!gl) { alert("WebGL initialization failed"); }
+      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.enable(gl.DEPTH_TEST)
+      
+      var planet = Mars = new Sphere();
+      resize();
+      window.requestAnimationFrame(render);
   }
