@@ -67,3 +67,26 @@ function init(){
 	
   window.requestAnimationFrame(render);
 }
+
+function render(){
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+	
+	V = translate(0.0, 0.0, zvalue);
+	angle += dAngle ;
+	var axis;
+	if (rotationAxis != undefined) axis = rotationAxis;
+	else axis = [1.0,1.0,1.0];
+	
+	ms = new MatrixStack();
+	ms.push();
+	ms.load(V);
+	ms.translate(offset);
+	ms.rotate((speed * angle), axis);
+	ms.scale(3.0, 3.0, 3.0);
+	cone.MV = ms.current();
+	ms.pop();
+	
+	cone.render();
+	window.requestAnimationFrame(render);
+}
+
