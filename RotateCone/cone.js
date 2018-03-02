@@ -90,3 +90,20 @@ function render(){
 	window.requestAnimationFrame(render);
 }
 
+function resize(){
+	var width = canvas.clientwidth;
+	var height = canvas.clientheight;
+	
+	gl.viewport(0,0,width, height);
+	var FieldOfView = 120.0;
+	aspect = width/height;
+	
+	cone.P = perspective(FieldOfView, aspect, width, height);
+}
+
+function DtoR(deg) {
+	return deg * Math.PI / 180.0;
+}
+
+window.onload = init;
+window.onresize = resize;
