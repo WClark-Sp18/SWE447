@@ -2,9 +2,10 @@ var cone = null;
 var gl = null;
 
 var canvas = undefined;
- 
+
 var near = 1.0;     
 var far = 10.0;     
+
 
 var V = undefined;
 var M = undefined;
@@ -61,9 +62,9 @@ function init() {
 
     document.onkeydown = function handleKeyDown(event) {
         mkey = event.which || event.keyCode;
-        switch( mkey ) { // String.fromCharCode(mkey)
-            case 33 : zvalue -= 0.05; break; // Page Up
-            case 34 : zvalue += 0.05; break; // Page Down
+        switch( mkey ) { 
+            case 33 : zvalue -= 0.05; break; 
+            case 34 : zvalue += 0.05; break; 
             case 37 : offset = [ -3.0,  0.0, 0.0 ]; break; 
             case 39 : offset = [  3.0,  0.0, 0.0 ]; break; 
             case 38 : offset = [ 0.0,  3.0, 0.0 ]; break; 
@@ -73,7 +74,7 @@ function init() {
         }    
     }    
 
-    gl.clearColor( 1.0, 0.0, 1.0, 1.0 );
+    gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
     gl.enable(gl.DEPTH_TEST);
 
     cone = new Cone(gl);
@@ -87,7 +88,7 @@ function render() {
     V = translate(0.0, 0.0, zvalue);
     angle += dAngle ;
 
-    var axis = undefined; //[ 1.0, 1.0, 1.0 ];
+    var axis = undefined; 
     if (rotationAxis != undefined) axis = rotationAxis;
     else axis = [ 1.0, 1.0, 1.0 ];
   
@@ -96,7 +97,7 @@ function render() {
     ms.load(V);
     ms.translate(offset);
     ms.rotate((speed * angle), axis);
-    ms.scale(3.0, 3.0, 3.0);
+    ms.scale(1.0, 1.0, 1.0);
     cone.MV = ms.current();
     ms.pop();
 
@@ -108,7 +109,7 @@ function resize() {
     var width = canvas.clientWidth,
     height = canvas.clientHeight;
     gl.viewport(0, 0, width, height);
-    var fovy = 120.0; 
+    var fovy = 120.0; // degrees
     aspect = width/height;
     cone.P = perspective(fovy, aspect, near, far);
 }
