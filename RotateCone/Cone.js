@@ -1,6 +1,7 @@
-const numSides = 8;
+const nSides = 8;
 
 function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
+
 
     var vertShdr = vertexShaderId || "Cone-vertex-shader";
     var fragShdr = fragmentShaderId || "Cone-fragment-shader";
@@ -14,31 +15,28 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
         return; 
     }
 
-    var n = numSides || numSides;  
+    var n = numSides || nSides; 
 
     var theta = 0.0;
     var dTheta = 2.0 * Math.PI / n;
     
-
-    this.positions = { numComponents : 3 };
+    	this.positions = { numComponents : 3 };
 	this.colors = {numComponents : 3 };
     
-
-    var positions = [ 0.0, 0.0, 0.0 ];
-	var colors = [1.0, 0.0, 1.0];
-    var indices = [ 0 ];
+    	var positions = [ 0.0, 0.0, 0.0 ];
+	var colors = [1.0, 0.0, 0.0];
+    	var indices = [ 0 ];
     
     for ( var i = 0; i < n; ++i ) {
         theta = i * dTheta;
         positions.push( Math.cos(theta), Math.sin(theta), 0.0 );
-		colors.push(1.0, 1.0, 0.0);
+		colors.push(0.0, 1.0, 0.0);
 
         indices.push(n - i);
     }
 
-    positions.push( 0.0, 0.0, 1.0 );
-	colors.push(0.0, 1.0, 1.0);
-    
+    	positions.push( 0.0, 0.0, 1.0 );
+	colors.push(0.0, 0.0, 1.0);
 
     indices.push(n);
 
@@ -48,8 +46,9 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
 
     indices.push(n + 1);
 
+
     indices = indices.concat( indices.slice(1,n+2).reverse() );
-	
+
 
     this.positions.buffer = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, this.positions.buffer );
@@ -77,7 +76,7 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
 	this.uniforms.MV = gl.getUniformLocation(this.program, "MV");
 	this.uniforms.P = gl.getUniformLocation(this.program, "P");
 
-  	this.MV = mat4(); // or undefined
+  	this.MV = mat4(); 
   	this.P = mat4();
 
     this.render = function () {
@@ -105,12 +104,13 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
  
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
 				
-		gl.uniformMatrix4fv( this.uniforms.MV, gl.FALSE, flatten(this.MV) );
-		gl.uniformMatrix4fv( this.uniforms.P, gl.FALSE, flatten(this.P) );
+	gl.uniformMatrix4fv( this.uniforms.MV, gl.FALSE, flatten(this.MV) );
+	gl.uniformMatrix4fv( this.uniforms.P, gl.FALSE, flatten(this.P) );
 		
+
         gl.drawElements( gl.TRIANGLE_FAN, this.indices.count, gl.UNSIGNED_SHORT, 0 );
 		
-        var offset = this.indices.count * 2;
+        var offset = this.indices.count * 2 /* sizeof(UNSIGNED_INT) */;
         gl.drawElements( gl.TRIANGLE_FAN, this.indices.count, gl.UNSIGNED_SHORT, offset );
     }
 };
