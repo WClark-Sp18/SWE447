@@ -31,30 +31,6 @@ function init() {
         return;
     }
     
-    document.getElementById("cBox").onclick = function() {
-        if(document.getElementById("cBox").checked == true) {
-            dAngle = 0.0;
-            stoprotating = 1;
-        }
-        else {
-            dAngle = 2.0;
-            stoprotating = 0;
-        }
-    }    
-    
-    document.getElementById("xButton").onclick = function() {
-        rotationAxis = xAxis;
-
-    }
-    
-    document.getElementById("yButton").onclick = function() {
-        rotationAxis = yAxis;
-    }    
-    
-    document.getElementById("slider").onchange = function(event) {
-        speed = event.target.value / 10; //100 - event.srcElement.value;
-    };
-    
     canvas.onmousedown = function handleMouseDown(event) {
         mouseDown = true;
         lastMouseX = event.clientX;
@@ -97,7 +73,7 @@ function init() {
         }    
     }    
 
-    gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
+    gl.clearColor( 1.0, 0.0, 1.0, 1.0 );
     gl.enable(gl.DEPTH_TEST);
 
     cone = new Cone(gl);
