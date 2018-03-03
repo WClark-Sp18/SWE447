@@ -81,7 +81,7 @@ function render() {
     ms.load(V);
     ms.translate(offset);
     ms.rotate((speed * angle), axis);
-    ms.scale(1.0, 1.0, 1.0);
+    ms.scale(3.0, 3.0, 3.0);
     cone.MV = ms.current();
     ms.pop();
 
