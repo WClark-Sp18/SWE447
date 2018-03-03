@@ -6,7 +6,6 @@ var canvas = undefined;
 var near = 1.0;     
 var far = 10.0;     
 
-
 var V = undefined;
 var M = undefined;
 var angle = 0.0;
@@ -57,24 +56,9 @@ function init() {
 		dAngle = degToRad(deltaX + deltaY) * Math.PI * 5;
 		lastMouseX = newX;
 		lastMouseY = newY;
-    }   
+    }      
 
-
-    document.onkeydown = function handleKeyDown(event) {
-        mkey = event.which || event.keyCode;
-        switch( mkey ) { 
-            case 33 : zvalue -= 0.05; break; 
-            case 34 : zvalue += 0.05; break; 
-            case 37 : offset = [ -3.0,  0.0, 0.0 ]; break; 
-            case 39 : offset = [  3.0,  0.0, 0.0 ]; break; 
-            case 38 : offset = [ 0.0,  3.0, 0.0 ]; break; 
-            case 40 : offset = [ 0.0,  -3.0, 0.0 ]; break; 
-            case 27 : offset = [ 0.0,  0.0, 0.0 ]; dAngle = 0; break; 
-            default : break;
-        }    
-    }    
-
-    gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
+    gl.clearColor( 1.0, 0.0, 1.0, 1.0 );
     gl.enable(gl.DEPTH_TEST);
 
     cone = new Cone(gl);
@@ -87,7 +71,7 @@ function render() {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     V = translate(0.0, 0.0, zvalue);
     angle += dAngle ;
-
+    
     var axis = undefined; 
     if (rotationAxis != undefined) axis = rotationAxis;
     else axis = [ 1.0, 1.0, 1.0 ];
@@ -109,7 +93,7 @@ function resize() {
     var width = canvas.clientWidth,
     height = canvas.clientHeight;
     gl.viewport(0, 0, width, height);
-    var fovy = 120.0; // degrees
+    var fovy = 120.0;
     aspect = width/height;
     cone.P = perspective(fovy, aspect, near, far);
 }
