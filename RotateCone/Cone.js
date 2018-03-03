@@ -1,4 +1,4 @@
-fucntion Cone(gl, vershader, fragshader, nsides){
+function Cone(gl, vershader, fragshader, nsides){
   vershader = "Cone-vertex-shader";
   fragshader = "Cone-fragment-shader";
   
