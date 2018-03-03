@@ -58,7 +58,7 @@ function init() {
 		lastMouseY = newY;
     }      
 
-    gl.clearColor( 1.0, 0.0, 1.0, 1.0 );
+    gl.clearColor( 0.0, 1.0, 0.0, 1.0 );
     gl.enable(gl.DEPTH_TEST);
 
     cone = new Cone(gl);
