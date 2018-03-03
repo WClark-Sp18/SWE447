@@ -32,7 +32,7 @@ function Cone( gl, numSides, vertexShaderId, fragmentShaderId ) {
         indices.push(n - i);
     }
 
-    positions.push( 1.0, 0.0, 1.0 );
+    positions.push( 0.0, 0.0, 1.0 );
 	  colors.push(0.0, 1.0, 1.0);
     
     indices.push(n);
