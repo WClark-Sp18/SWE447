@@ -12,3 +12,8 @@ Implementation:
   THREE.js
   http://learningwebgl.com/blog/?page_id=1217
   Other files I will find during research
+
+
+
+Resources/Research:
+https://eloquentjavascript.net/16_game.html
