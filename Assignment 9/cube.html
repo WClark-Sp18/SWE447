@@ -38,11 +38,11 @@ void main()
     //gl_FragColor = texture2D(uSampler, vTextureCoord);
     
     //now let's manipulate that image by swapping red and blue?
-    //gl_FragColor = texture2D(uSampler, vTextureCoord).bgra;
+    //gl_FragColor = texture2D(uSampler, vTextureCoord).grba;
     
     //***  RGB ➛ Grayscale (luminance) ***
-    /*const vec3 RGBtoY = vec3(0.2126, 0.7152, 0.0722);
-    gl_FragColor = vec4(vec3(dot(RGBtoY, texture2D(uSampler, vTextureCoord).rgb)), 1.0);*/
+    const vec3 RGBtoY = vec3(1.0, 1.0, 1.0);
+    gl_FragColor = vec4(vec3(dot(RGBtoY, texture2D(uSampler, vTextureCoord).rgb)), 1.0);
     
     //*******************
     /*const int NumPixels = 100; //very slow if we take the real number of pixels (uTextureSize.x * uTextureSize.y) 
@@ -66,7 +66,7 @@ void main()
     
     // using a convolution kernel. 3x3 matrix where each entry in the matrix 
     // represents how much to multiply the 8 pixels around the pixel we are rendering.
-    vec4 colorSum =
+    /*vec4 colorSum =
      texture2D(uSampler, vTextureCoord + onePixel * vec2(-1, -1)) * ukernel[0] +
      texture2D(uSampler, vTextureCoord + onePixel * vec2( 0, -1)) * ukernel[1] +
      texture2D(uSampler, vTextureCoord + onePixel * vec2( 1, -1)) * ukernel[2] +
@@ -79,7 +79,7 @@ void main()
  
    // Divide the sum by the weight but just use rgb
    // we'll set alpha to 1.0
-   gl_FragColor = vec4((colorSum / ukernelWeight).rgb, 1.0);
+   gl_FragColor = vec4((colorSum / ukernelWeight).rgb, 1.0);*/
 }
 </script>
 </head>
