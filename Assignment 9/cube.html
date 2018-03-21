@@ -35,7 +35,7 @@ uniform float ukernelWeight;
 void main()
 {
     //*** without image processing ***
-    gl_FragColor = texture2D(uSampler, vTextureCoord);
+    //gl_FragColor = texture2D(uSampler, vTextureCoord);
     
     //now let's manipulate that image by swapping red and blue?
     //gl_FragColor = texture2D(uSampler, vTextureCoord).bgra;
@@ -59,9 +59,9 @@ void main()
     // compute 1 pixel in texture coordinates.
     vec2 onePixel = vec2(1.0, 1.0) / uTextureSize;
     // average the left, middle, and right pixels.
-    /*gl_FragColor = (texture2D(uSampler, vTextureCoord) +
+    gl_FragColor = (texture2D(uSampler, vTextureCoord) +
     texture2D(uSampler, vTextureCoord + vec2(onePixel.x, 0.0)) +
-    texture2D(uSampler, vTextureCoord + vec2(-onePixel.x, 0.0))) / 3.0;*/
+    texture2D(uSampler, vTextureCoord + vec2(-onePixel.x, 0.0))) / 3.0;
     
     /*******************
     // using a convolution kernel. 3x3 matrix where each entry in the matrix 
