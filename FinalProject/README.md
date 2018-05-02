@@ -17,8 +17,13 @@ A stretch goal will be adding more enemies and power-ups like in Mario.
 
 <p>Implementation:</p>
 <ul>
-  <li>THREE.js</li>
-  <li>http://learningwebgl.com/blog/?page_id=1217</li>
-  <li>Other files I will find during research</li>
+  <li>node.js</li>
+  <li>Phaser Game Engine</li>
 </ul>
 <p>Resources/Research: https://eloquentjavascript.net/16_game.html</p>
+
+
+<h2>Basic Platformer</h2>
+<p>i used node.js to create a local webserver and then set it up for phaser</p>
+<p>used the assets created by phaser for sprites</p>
+<p>made the script for displaying all the sprites and placing them on the "canvas"</p>
