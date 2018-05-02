@@ -1,0 +1,14 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "<h2>Proposal</h2>\r <p>\r My final project is going to be a basic platformer level.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
